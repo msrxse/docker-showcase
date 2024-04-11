@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/node': {
-        target: 'http://api-node:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api\/node/, ''),
         secure: false,
