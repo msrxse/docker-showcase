@@ -20,8 +20,26 @@ run-api-node:
 run-client-react:
 	@echo Starting react client
 	cd client-react && \
-		np
+		npm run dev
 		
+### DOCKER COMPOSE COMMANDS
+
+.PHONY: compose-build
+compose-build:
+	docker compose build
+
+.PHONY: compose-up
+compose-up:
+	docker compose up
+
+.PHONY: compose-up-build
+compose-up-build:
+	docker compose up --build
+
+.PHONY: compose-down
+compose-down:
+	docker compose down
+	
 ### DOCKER CLI COMMANDS	
 
 .PHONY: docker-build-all
