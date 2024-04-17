@@ -62,6 +62,8 @@ You will notice that each of the run commands has a bunch of options used to ens
 - Restart policy allows docker to restart the container (for example if database weren't up yet causing one of the api servers to crash)
 - -v option on client-react-vite because vite.config needs to be different on vite than on nginx
 
+At this point the add would be running at port 5173 (http://localhost:5173/). And the backend at http://localhost:5173/api/node or just http://127.0.0.1:3000/
+
 
 ## docker compose
 
@@ -115,3 +117,4 @@ We want our development environment to have the following attributes:
 # Links
 - [ Complete Docker Course - From BEGINNER to PRO! (Learn Containers) - DevOps Dire](https://www.youtube.com/watch?v=RqTEHSBrYFw)
 - [Composerize](https://www.composerize.com/)
+
