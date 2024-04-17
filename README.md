@@ -112,14 +112,6 @@ We want our development environment to have the following attributes:
 
 5) **Executing tests:** We also need the ability to execute our test suites within containers. Again, we can create a custom `docker-compose-test.yml` overlay which modifies the container commands to execute our tests. To build the api images and execute their tests, you can execute `make run-tests` which will use the `test` compose file along with the `dev` compose file to do so.
 
-## Continuous Integration
-
-See `.github/workflows/image-ci.yml` for a basic GitHub Action workflow that builds, scans, tags, and pushes a container image.
-
-It leverages a few publicly available actions from the marketplace:
-1) https://github.com/marketplace/actions/docker-metadata-action (generates tags for the container images)
-2) https://github.com/marketplace/actions/docker-login (logs into DockerHub)
-3) https://github.com/marketplace/actions/build-and-push-docker-images (builds and pushes the images)
-4) https://github.com/marketplace/actions/aqua-security-trivy (scans the images for vulnerabilities)
-
-If you want to build out more advanced CI workflows I recommend looking at Bret Fisher's `Automation with Docker for CI/CD Workflows` repo (https://github.com/BretFisher/docker-cicd-automation). It has many great examples of the types of things you might want to do with Docker in a CI/CD pipeline!
+# Links
+- [ Complete Docker Course - From BEGINNER to PRO! (Learn Containers) - DevOps Dire](https://www.youtube.com/watch?v=RqTEHSBrYFw)
+- [Composerize](https://www.composerize.com/)
