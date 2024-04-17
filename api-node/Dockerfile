@@ -1,3 +1,5 @@
+# Has 2 stages  - the dev one so we can target the development environment
+
 # Pin specific version
 # Use slim for reduced image size
 FROM node:19.6-bullseye-slim AS base
@@ -9,17 +11,17 @@ WORKDIR /usr/src/app
 # dependencies (better layer caching)
 COPY package*.json ./
 
-FROM base as dev
+FROM base AS dev
 
 RUN --mount=type=cache,target=/usr/src/app/.npm \
-npm set cache /usr/src/app/.npm && \
-npm install 
+  npm set cache /usr/src/app/.npm && \
+  npm install 
 
 COPY . .
 
 CMD [ "npm", "run", "dev"]
 
-FROM base as production
+FROM base AS production
 
 # Set NODE_ENV
 ENV NODE_ENV production

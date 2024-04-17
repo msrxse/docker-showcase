@@ -1,5 +1,28 @@
 DATABASE_URL:=postgres://postgres:foobarbaz@localhost:5432/postgres
 
+### DOCKER COMPOSE COMMANDS
+
+DEV_COMPOSE_FILE=docker-compose-dev.yml
+
+.PHONY: compose-build
+compose-build:
+	docker compose -f $(DEV_COMPOSE_FILE) build
+
+.PHONY: compose-up
+compose-up:
+	docker compose -f $(DEV_COMPOSE_FILE) up
+
+.PHONY: compose-up-build
+compose-up-build:
+	docker compose -f $(DEV_COMPOSE_FILE) up --build
+
+.PHONY: compose-down
+compose-down:
+	docker compose -f $(DEV_COMPOSE_FILE) down
+
+
+### MANUAL APP START CLI COMMANDS
+
 .PHONY: run-postgres
 run-postgres:
 	@echo Starting postgres container
@@ -22,24 +45,6 @@ run-client-react:
 	cd client-react && \
 		npm run dev
 		
-### DOCKER COMPOSE COMMANDS
-
-.PHONY: compose-build
-compose-build:
-	docker compose build
-
-.PHONY: compose-up
-compose-up:
-	docker compose up
-
-.PHONY: compose-up-build
-compose-up-build:
-	docker compose up --build
-
-.PHONY: compose-down
-compose-down:
-	docker compose down
-	
 ### DOCKER CLI COMMANDS	
 
 .PHONY: docker-build-all

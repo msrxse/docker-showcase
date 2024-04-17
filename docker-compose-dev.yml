@@ -7,7 +7,18 @@ services:
       dockerfile: Dockerfile.dev
     init: true
     volumes:
-      - ./client-react/vite.config.js:/usr/src/app/vite.config.dev.js
+      # Bind entire sourcecode (for hot-reloading)
+      - type: bind
+        source: ./client-react
+        target: /usr/src/app/
+      # Add type=volume with no source and  only a target=node_modules
+      #  so efectively overides the above bind mount for this path so node_modules wont be included
+      - type: volume
+        target: /usr/src/app/node_modules
+      # Bind vite.config since file name is not default
+      - type: bind
+        source: ./client-react/vite.config.js
+        target: /usr/src/app/vite.config.dev.js
     networks:
       - frontend
     ports:
@@ -28,7 +39,18 @@ services:
     build:
       context: api-node/
       dockerfile: Dockerfile
+      # Would target production as the final stage but we want dev!
+      target: dev
     init: true
+    volumes:
+      # Bind entire sourcecode (for hot-reloading)
+      - type: bind
+        source: ./api-node
+        target: /usr/src/app/
+      # Add type=volume with no source and only a target=node_modules
+      #  so efectively overides the above bind mount for this path so node_modules wont be included
+      - type: volume
+        target: /usr/src/app/node_modules
     depends_on:
       - db
     environment:
