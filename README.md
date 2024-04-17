@@ -108,7 +108,7 @@ We want our development environment to have the following attributes:
 
       These modifications to the configuration (overridden commands + port publishing) are specified in `docker-compose-debug.yml`. By passing both `docker-compose-dev.yml` AND `docker-compose-debug.yml` to the `docker compose up` command (See: `make compose-up-debug-build`) Docker combines the two files, taking the config from the latter and overlaying it onto the former.
 
-      The `./api-node/README.md` show a launch.json configuration you can use to connnect to these remote debuggers using VSCode. The key setting is `substitutePath` such that you can set breakpoints on your local system that get recognized within the container.
+      The `./api-node/README.md` show a launch.json configuration you can use to connect to these remote debuggers using VSCode. The key setting is `substitutePath` such that you can set breakpoints on your local system that get recognized within the container.
 
 5) **Executing tests:** We also need the ability to execute our test suites within containers. Again, we can create a custom `docker-compose-test.yml` overlay which modifies the container commands to execute our tests. To build the api images and execute their tests, you can execute `make run-tests` which will use the `test` compose file along with the `dev` compose file to do so.
 

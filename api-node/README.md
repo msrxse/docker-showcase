@@ -1,6 +1,12 @@
-```bash
-nvm ls
-nvm use node 19.4
-npm install
-npm run dev
+# Remote debugging setup (vscode launch.json):
+
+```
+    {
+      "name": "Docker: Attach to Node",
+      "type": "node",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/docker-course/devops-directive-docker-course/05-example-web-application/api-node",
+      "remoteRoot": "/usr/src/app",
+      "port": 9229
+    },
 ```
